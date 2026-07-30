@@ -24,3 +24,47 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #d1d5db;
+  opacity: 1;
+  transition: 0.3s;
+  margin: 0 5px !important;
+  border-radius: 999px;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  width: 34px;
+  background: #dc2626;
+}
+
+#about {
+  scroll-margin-top: 80px; /* navbar की height के बराबर */
+}
+#contact {
+  scroll-margin-top: 80px; /* navbar की height के बराबर */
+}
+#product {
+  scroll-margin-top: 80px; /* navbar की height के बराबर */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
