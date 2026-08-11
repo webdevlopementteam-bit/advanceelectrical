@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { FaCheckCircle, FaUsers, FaShieldAlt, FaStar } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaUsers,
+  FaShieldAlt,
+  FaStar,
+} from "react-icons/fa";
 
 const FEATURES = [
   {
@@ -36,7 +41,11 @@ function FeatureItem({ item }) {
       >
         {item.icon}
       </div>
-      <h3 className="mt-5 font-bold text-lg text-gray-900">{item.title}</h3>
+
+      <h3 className="mt-5 font-bold text-lg text-gray-900">
+        {item.title}
+      </h3>
+
       <p className="mt-2 text-sm text-gray-500 leading-6 max-w-[260px] mx-auto">
         {item.desc}
       </p>
@@ -54,9 +63,11 @@ function Features() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="h-px w-10 bg-red-600" />
+
             <span className="text-red-600 font-bold tracking-[0.2em] text-sm uppercase">
               Why Choose Us
             </span>
+
             <span className="h-px w-10 bg-red-600" />
           </div>
 
@@ -72,13 +83,19 @@ function Features() {
           <div className="w-16 h-1 bg-red-600 rounded-full mx-auto mt-6" />
         </div>
 
-        {/* Desktop layout */}
+        {/* =====================================================
+            DESKTOP LAYOUT
+            Feature 1 | Logo | Feature 3
+            Feature 2 | Logo | Feature 4
+        ===================================================== */}
         <div className="hidden lg:grid grid-cols-3 gap-10 items-center">
+          {/* Left Features */}
           <div className="space-y-20">
             <FeatureItem item={left1} />
             <FeatureItem item={left2} />
           </div>
 
+          {/* Center Logo */}
           <div className="flex justify-center">
             <div className="relative w-80 h-80 rounded-full bg-gray-200/70 shadow-inner flex items-center justify-center">
               <div className="w-60 h-60 rounded-full bg-white shadow-xl flex items-center justify-center p-8">
@@ -88,21 +105,48 @@ function Features() {
                   width={200}
                   height={200}
                   className="object-contain"
-                  style={{ width: "auto", height: "auto", maxWidth: "170px", maxHeight: "170px" }}
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "170px",
+                    maxHeight: "170px",
+                  }}
                 />
               </div>
             </div>
           </div>
 
+          {/* Right Features */}
           <div className="space-y-20">
             <FeatureItem item={right1} />
             <FeatureItem item={right2} />
           </div>
         </div>
 
-        {/* Mobile / tablet fallback */}
+        {/* =====================================================
+            MOBILE / TABLET LAYOUT
+
+            Top:
+            Feature 1 | Feature 2
+
+                    LOGO
+
+            Bottom:
+            Feature 3 | Feature 4
+        ===================================================== */}
         <div className="lg:hidden">
-          <div className="flex justify-center mb-12">
+          {/* ================= TOP TWO FEATURES ================= */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8">
+            {FEATURES.slice(0, 2).map((feature) => (
+              <FeatureItem
+                key={feature.title}
+                item={feature}
+              />
+            ))}
+          </div>
+
+          {/* ================= CENTER LOGO ================= */}
+          <div className="flex justify-center my-12 sm:my-14">
             <div className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full bg-gray-200/70 shadow-inner flex items-center justify-center">
               <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white shadow-xl flex items-center justify-center p-6">
                 <Image
@@ -111,15 +155,24 @@ function Features() {
                   width={140}
                   height={140}
                   className="object-contain"
-                  style={{ width: "auto", height: "auto", maxWidth: "110px", maxHeight: "110px" }}
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "110px",
+                    maxHeight: "110px",
+                  }}
                 />
               </div>
             </div>
           </div>
 
+          {/* ================= BOTTOM TWO FEATURES ================= */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8">
-            {FEATURES.map((f) => (
-              <FeatureItem key={f.title} item={f} />
+            {FEATURES.slice(2, 4).map((feature) => (
+              <FeatureItem
+                key={feature.title}
+                item={feature}
+              />
             ))}
           </div>
         </div>

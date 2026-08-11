@@ -4,6 +4,7 @@ import {
   FaIndustry,
   FaTruck,
   FaChevronRight,
+  FaArrowDown,
   FaArrowRight,
 } from "react-icons/fa";
 
@@ -34,13 +35,16 @@ export default function HowWeWork() {
   return (
     <section id="how-we-work" className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
+
         {/* Heading */}
         <div className="text-center mb-20">
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="h-px w-10 bg-red-600" />
+
             <span className="text-red-600 font-bold tracking-[0.2em] text-sm uppercase">
               Our Process
             </span>
+
             <span className="h-px w-10 bg-red-600" />
           </div>
 
@@ -56,14 +60,19 @@ export default function HowWeWork() {
           <div className="w-16 h-1 bg-red-600 rounded-full mx-auto mt-6" />
         </div>
 
-        {/* Steps */}
-        <div className="relative grid gap-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {/* Connecting line + chevrons (desktop) */}
-          <div className="hidden lg:block absolute top-[52px] left-[12.5%] right-[12.5%] h-0.5 bg-red-600" />
+        {/* =========================================================
+            DESKTOP
+            ========================================================= */}
+        <div className="hidden lg:grid relative grid-cols-4 gap-8">
+
+          {/* Horizontal Connecting Line */}
+          <div className="absolute top-[52px] left-[12.5%] right-[12.5%] h-0.5 bg-red-600 z-0" />
+
+          {/* Desktop Chevrons */}
           {[25, 50, 75].map((pos) => (
             <div
               key={pos}
-              className="hidden lg:flex absolute top-[52px] -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-red-200 shadow items-center justify-center text-red-600 text-xs z-10"
+              className="absolute top-[52px] -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-red-200 shadow flex items-center justify-center text-red-600 text-xs z-10"
               style={{ left: `${pos}%` }}
             >
               <FaChevronRight />
@@ -71,8 +80,11 @@ export default function HowWeWork() {
           ))}
 
           {STEPS.map((step, i) => (
-            <div key={step.title} className="relative flex flex-col items-center">
-              {/* Ribbon number tag */}
+            <div
+              key={step.title}
+              className="relative flex flex-col items-center"
+            >
+              {/* Number Ribbon */}
               <div
                 className="relative z-20 -mb-5 w-12 h-8 bg-red-600 text-white text-sm font-bold flex items-center justify-center shadow-sm"
                 style={{
@@ -83,14 +95,18 @@ export default function HowWeWork() {
                 {String(i + 1).padStart(2, "0")}
               </div>
 
-              {/* Icon circle with dashed ring */}
+              {/* Icon Circle */}
               <div className="relative z-10 w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center">
                 <div className="absolute -inset-1.5 rounded-full border-2 border-dashed border-red-200" />
-                <div className="text-red-600 text-2xl">{step.icon}</div>
+
+                <div className="text-red-600 text-2xl">
+                  {step.icon}
+                </div>
               </div>
 
               {/* Card */}
               <div className="relative -mt-10 mb-5 w-full bg-white rounded-2xl shadow-md pt-14 pb-9 px-5 text-center">
+
                 <h3 className="font-bold text-gray-900 uppercase tracking-tight">
                   {step.title}
                 </h3>
@@ -99,10 +115,14 @@ export default function HowWeWork() {
                   <span className="absolute left-0 top-0 h-px w-10 bg-red-600" />
                 </div>
 
-                <p className="text-sm text-gray-500 leading-6">{step.desc}</p>
+                <p className="text-sm text-gray-500 leading-6">
+                  {step.desc}
+                </p>
 
-                {/* Bottom ticket stub */}
+                {/* Bottom Red Bar */}
                 <div className="absolute left-0 right-0 bottom-0 h-3 bg-red-600 rounded-b-2xl" />
+
+                {/* Arrow */}
                 <div className="absolute left-1/2 -translate-x-1/2 -bottom-5 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-red-600">
                   <FaArrowRight className="text-sm" />
                 </div>
@@ -110,6 +130,73 @@ export default function HowWeWork() {
             </div>
           ))}
         </div>
+
+        {/* =========================================================
+            MOBILE / TABLET
+            Vertical Connecting Process
+            ========================================================= */}
+        <div className="lg:hidden relative">
+
+          {/* Vertical Connecting Line */}
+          <div className="absolute left-1/2 top-10 bottom-10 -translate-x-1/2 w-0.5 bg-red-600 z-0" />
+
+          {STEPS.map((step, i) => (
+            <div
+              key={step.title}
+              className="relative flex flex-col items-center mb-20 last:mb-0"
+            >
+
+              {/* Number Ribbon */}
+              <div
+                className="relative z-20 -mb-5 w-12 h-8 bg-red-600 text-white text-sm font-bold flex items-center justify-center shadow-sm"
+                style={{
+                  clipPath:
+                    "polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%)",
+                }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </div>
+
+              {/* Icon Circle */}
+              <div className="relative z-10 w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center">
+
+                {/* Dashed Ring */}
+                <div className="absolute -inset-1.5 rounded-full border-2 border-dashed border-red-200" />
+
+                <div className="text-red-600 text-2xl">
+                  {step.icon}
+                </div>
+              </div>
+
+              {/* Card */}
+              <div className="relative -mt-10 w-full max-w-md bg-white rounded-2xl shadow-md pt-14 pb-9 px-5 text-center">
+
+                <h3 className="font-bold text-gray-900 uppercase tracking-tight">
+                  {step.title}
+                </h3>
+
+                <div className="relative w-24 h-px bg-gray-200 mx-auto mt-3 mb-4">
+                  <span className="absolute left-0 top-0 h-px w-10 bg-red-600" />
+                </div>
+
+                <p className="text-sm text-gray-500 leading-6">
+                  {step.desc}
+                </p>
+
+                {/* Bottom Red Bar */}
+                <div className="absolute left-0 right-0 bottom-0 h-3 bg-red-600 rounded-b-2xl" />
+
+                {/* Down Arrow */}
+                {i !== STEPS.length - 1 && (
+                  <div className="absolute left-1/2 -translate-x-1/2 -bottom-5 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-red-600 z-20">
+                    <FaArrowDown className="text-sm" />
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

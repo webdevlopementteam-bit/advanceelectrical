@@ -24,37 +24,47 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex items-center gap-10 text-sm font-semibold text-gray-700">
-          <li>
-            <Link href="/" className="hover:text-red-500 transition">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="#about" className="hover:text-red-500 transition">
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link href="#product" className="hover:text-red-500 transition">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link href="#contact" className="hover:text-red-500 transition">
-              Contact Us
-            </Link>
-          </li>
-        </ul>
+        <div className="flex items-center gap-8">
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex items-center gap-10 text-sm font-semibold text-gray-700">
+            <li>
+              <Link href="/" className="hover:text-red-500 transition">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="#about" className="hover:text-red-500 transition">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="#product" className="hover:text-red-500 transition">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link href="#contact" className="hover:text-red-500 transition">
+                Contact Us
+              </Link>
+            </li>
+          </ul>
 
-        {/* Mobile Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 rounded-md text-gray-700 hover:text-red-500 focus:outline-none transition"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* CTA */}
+          <Link
+            href="#contact"
+            className="hidden lg:inline-flex items-center gap-2 bg-red-600 hover:bg-black text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+          >
+            Get a Quote
+          </Link>
+
+          {/* Mobile Toggle Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-red-500 focus:outline-none transition"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -89,9 +99,16 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="py-3 hover:text-red-500"
+              className="py-3 border-b hover:text-red-500"
             >
               Contact Us
+            </Link>
+            <Link
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-black text-white text-sm font-semibold px-6 py-3 rounded-full transition-all duration-300"
+            >
+              Get a Quote
             </Link>
           </div>
         </div>
